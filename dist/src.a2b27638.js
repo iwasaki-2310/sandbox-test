@@ -165,18 +165,183 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 /**
  * テンプレート文字列
  */
-var name = "静";
-var age = 28;
+// const name = "静";
+// const age = 28;
 
 //「私の名前は静です。年齢は28歳です。」
 
 //従来の方法
-var message1 = "私の名前は" + name + "です。年齢は" + age + "歳です。";
-console.log(message1);
+// const message1 = "私の名前は" + name + "です。年齢は" + age + "歳です。";
+// console.log(message1);
 
-//テンプレート文字列を用いた方法
-var message2 = "\u79C1\u306E\u540D\u524D\u306F".concat(name, "\u3067\u3059\u3002\u5E74\u9F62\u306F").concat(age, "\u3067\u3059\u3002");
-console.log(message2);
+// //テンプレート文字列を用いた方法
+// const message2 = `私の名前は${name}です。年齢は${age}です。`;
+// console.log(message2);
+
+/**
+ *　アロー関数
+ */
+//従来の関数
+// function func1(str) {
+//     return str;
+// }
+// const func1 = function (str) {
+//   return str;
+// };
+// console.log(func1("func1です"));
+
+// //アロー関数
+// const func2 = (str) => {
+//   return str;
+// };
+// console.log(func2("func2です"));
+
+// //以下二つのアロー関数の書き方は結果が同じ！！
+// const func3 = (num1, num2) => {
+//  `合計は、${num1 + num2}です。`;
+// }
+// const func3 = (num1, num2) => `合計は、${num1 + num2}です。`;
+
+// console.log(func3(10, 20));
+
+/**
+ * 分割代入
+ */
+// const myProfile = {
+//     name: "静",
+//     age: "27",
+// };
+
+// // const message1 = `名前は${myProfile.name}です。年齢は${myProfile.age}です。`
+// // console.log(message1);
+
+// const { name, age } = myProfile;
+// const message2 = `名前は${name}です。年齢は${age}です。`
+// console.log(message2);
+
+// const myProfile = ["静", 27];
+
+// const message3 = `名前は${myProfile[0]}です。年齢は${myProfile[1]}歳です。`;
+// console.log(message3);
+
+// const [name, age] = myProfile;
+// const message4 = `名前は${name}です。年齢は${age}歳です。`;
+// console.log(message4);
+
+/**
+ * デフォルト値,引数など
+ */
+// const sayHello = (name = "ゲスト") => console.log(`こんにちは！${name}さん！`);
+// sayHello("静");
+
+/**
+ * スプレッド構文 ...
+ */
+//配列の展開
+// const arr1 = [1, 2];
+// // console.log(arr1);
+// // console.log(...arr1);
+
+// const sumFunc = (num1, num2) => console.log(num1 + num2);
+// sumFunc(arr1[0], arr1[1]);
+// sumFunc(...arr1);
+
+//まとめる
+// const arr2 = [1, 2, 3, 4, 5];
+// const [num1, num2, ...arr3] = arr2;
+// console.log(num1);
+// console.log(num2);
+// console.log(arr3);
+
+//配列のコピー,結合
+// const arr4 = [10, 20];
+// const arr5 = [30, 40];
+
+// const arr6 = [...arr4];
+// arr6[0] = 100;
+// console.log(arr6);
+// console.log(arr4);
+
+// const arr7 = [...arr4, ...arr5];
+// console.log(arr7);
+
+// const arr8 = arr4;
+// arr8[0] = 100;
+// console.log(arr4);
+
+/**
+ * ma
+ * mapやfilterを使った配列
+ */
+// const nameArr = ["田中", "山田", "静"];
+// const nameArr2  = [...nameArr];
+// for (let index = 0; index < nameArr.length; index++) {
+// //   console.log(nameArr[index]);
+//   console.log(`${nameArr[index].length}番目は${nameArr[index]}さんです`);
+// }
+
+// const nameArr2 = nameArr.map( (name) => {
+//  return name;
+// });
+// console.log(nameArr2);
+
+// nameArr.map((name, index) => console.log(`${index + 1}番目は${name}さんです`));
+
+// const numArr = [1, 2, 3, 4, 5];
+// const newNumArr = numArr.filter((num) => {
+//  return num % 2 == 0;
+// });
+// console.log(newNumArr);
+
+// const newNameArr = nameArr.map((name) => {
+//     if(name == "静") {
+//         return name;
+//     } else {
+//         return `${name}さん`;
+//     }
+// });
+// console.log(newNameArr);
+
+/**
+ * 三項演算子
+ */
+//ある条件 ? 条件がtrueの時 : 条件がfalseの時
+// const val1 = 1 < 0 ? "trueです" : "falseです";
+// console.log(val1);
+
+// const num = 1300;
+// // console.log(num.toLocaleString());//金額表示にしてくれる！！
+
+// const formattedNum = typeof num === "number" ? num.toLocaleString() : "数値を入力してください";
+// console.log(formattedNum);
+
+// const checkSum = (num1, num2) => {
+//     return num1 + num2 > 100 ? "100を超えています！！" : "許容範囲内です！！";
+// };
+// console.log(checkSum(10, 100));
+
+/**
+ * 論理演算子の本当の意味を知ろう
+ */
+var flag1 = true;
+var flag2 = false;
+
+// if(flag1 || flag2) {
+//     console.log("1か2はtrueになります");
+// }
+if (flag1 && flag2) {
+  console.log("1か2はtrueになります");
+}
+
+//　||は左側がfalseなら右側を返す
+// const num = 100;
+// const fee = num || "金額未設定です";
+// console.log(fee);
+
+// &&は左側がtrueなら右側を返す
+var num2 = null;
+var fee2 = num2 && "何か設定されました";
+console.log(fee2);
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -202,7 +367,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41839" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43077" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
